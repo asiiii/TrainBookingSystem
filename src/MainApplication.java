@@ -1,10 +1,11 @@
 import java.lang.reflect.Array;
+import java.text.ParseException;
 import java.util.*;
 
 public class MainApplication {
 
 
-    public static void main(String args[]){
+    public static void main(String args[]) throws ParseException {
         System.out.println("WELCOME TO DENUWARA MANIKE TRAIN BOOKING system\n\n");
         // create Station instances
         TrainBookingSystem.addStationList();
@@ -56,13 +57,12 @@ public class MainApplication {
                         }
                         stop=true;
                     }
-                    System.exit(-1);
                     break;
                 default:
                     break;
             }
         }
-
+        System.exit(-1);
     }
 
     //method to display menu options

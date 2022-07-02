@@ -40,7 +40,7 @@ public class Customer {
 
     public boolean checkCustId(String custId){
         for(Customer customer: TrainBookingSystem.customerDetails){
-            if(custId==customer.getCustId()){
+            if(custId.equals(customer.getCustId())){
                 return true;
             }
         }
