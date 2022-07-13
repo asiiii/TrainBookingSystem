@@ -7,6 +7,9 @@ public class Station {
         this.stationName = stationName;
     }
 
+    public Station() {
+    }
+
     public String getStationId() {
         return stationId;
     }

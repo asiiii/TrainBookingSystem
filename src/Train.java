@@ -1,17 +1,24 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Train {
     private String trainId;
     private String trainType;
     private ArrayList<Seat> seatList= new ArrayList<Seat>();
+    private Station startingStation;
+    private Station endingStation;
+    private Date date;
 
-    public Train(String trainId, String trainType) {
+    public Train(String trainId, String trainType, Station startingStation, Station endingStation, Date date) {
         this.trainId = trainId;
         this.trainType = trainType;
-        for (int i = 1; i<43;i++){
+        for (int i = 1; i< TrainBookingSystem.SEATING_CAPACITY+1 ;i++){
             Seat seat = new Seat(i, null, true);
             seatList.add(seat);
         }
+        this.startingStation=startingStation;
+        this.endingStation=endingStation;
+        this.date = date;
     }
     public Train(){
 
@@ -40,7 +47,32 @@ public class Train {
         this.seatList = seatList;
     }
 
-    public boolean seatCheck(Train train, int seatNo){
+    public Station getStartingStation() {
+        return startingStation;
+    }
+
+    public void setStartingStation(Station startingStation) {
+        this.startingStation = startingStation;
+    }
+
+    public Station getEndingStation() {
+        return endingStation;
+    }
+
+    public void setEndingStation(Station endingStation) {
+        this.endingStation = endingStation;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    // FIxME seatAvailabilityCheck should get the starting and ending stations from booking and checks if user input stations do not overlap
+    public boolean seatAvailabilityCheck(Train train, int seatNo, Station startingStart, Station stationEnd){
         boolean availability = true;
         for (Seat seat: train.getSeatList()){
             if(seat.getSeatId() == seatNo){

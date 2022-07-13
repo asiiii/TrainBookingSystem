@@ -8,40 +8,41 @@ public class MainApplication {
     public static void main(String args[]) throws ParseException {
         System.out.println("WELCOME TO DENUWARA MANIKE TRAIN BOOKING system\n\n");
         // create Station instances
-        TrainBookingSystem.addStationList();
+        TrainBookingSystem trainBookingSystem = new TrainBookingSystem();
+        trainBookingSystem.addStationList();
 
         // run Spring application here
 
         boolean exit = false;
         while (!exit){
             displayMenu();
-            String userInput = TrainBookingSystem.checkInput();
+            String userInput = trainBookingSystem.checkInput();
             System.out.println(" ");
 
             switch (userInput){
                 case "A":
-                    TrainBookingSystem.addSeats(); //call function to add customer to seat
+                    trainBookingSystem.addSeats(); //call function to add customer to seat
                     break;
                 case "V":
-                    TrainBookingSystem.viewAllSeats(); //call function to view seats
+                    trainBookingSystem.viewAllSeats(); //call function to view seats
                     break;
                 case "E":
-                    TrainBookingSystem.emptySeats(); //call function to display empty seats
+                    trainBookingSystem.emptySeats(); //call function to display empty seats
                     break;
                 case "D":
-                    TrainBookingSystem.deleteSeats(); //call function to delete customer from seat
+                    trainBookingSystem.deleteSeats(); //call function to delete customer from seat
                     break;
                 case "F":
-                    TrainBookingSystem.findSeats(); //call function to find seat assigned to customer name
+                    trainBookingSystem.findSeats(); //call function to find seat assigned to customer name
                     break;
                 case "S":
-                    TrainBookingSystem.storeData();//call function to store program data
+                    trainBookingSystem.storeData();//call function to store program data
                     break;
                 case "L":
-                    TrainBookingSystem.loadData();//call function to load program data
+                    trainBookingSystem.loadData();//call function to load program data
                     break;
                 case "O":
-                    TrainBookingSystem.seatOrder();//call function to view ordered seats alphabetically
+                    trainBookingSystem.seatOrder();//call function to view ordered seats alphabetically
                     break;
                 case "Q":
                     boolean stop=false;

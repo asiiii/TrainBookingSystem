@@ -3,27 +3,31 @@ public class Customer {
     private String firstName;
     private String lastName;
 
-    public Customer(String firstName, String lastName) {
+    public Customer(String firstName, String lastName, String custId) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.custId = "cust0";
-        while (checkCustId(custId)){
-            String[] split = custId.split("t");
-            int num = Integer.valueOf(split[1]);
-            this.custId = "cust" + num++; // each time a match object is created match code increments
-        }
-    }
-
-    public void setCustId(String custId) {
         this.custId = custId;
     }
 
+    public Customer() {
+    }
+
+    public void setCustId(String custId) {
+        if(custId!= null){
+        this.custId = custId;
+        }
+    }
+
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        if(firstName!= null && firstName.matches( "[A-Z][a-z]*" )) {
+            this.firstName = firstName;
+        }
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        if(lastName != null && lastName.matches( "[A-Z][a-z]*" )){
+            this.lastName = lastName;
+        }
     }
 
     public String getCustId() {
@@ -38,12 +42,4 @@ public class Customer {
         return lastName;
     }
 
-    public boolean checkCustId(String custId){
-        for(Customer customer: TrainBookingSystem.customerDetails){
-            if(custId.equals(customer.getCustId())){
-                return true;
-            }
-        }
-        return false;
-    }
 }
